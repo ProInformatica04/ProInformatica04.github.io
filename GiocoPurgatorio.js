@@ -38,7 +38,7 @@ preload ()
     this.load.image('bomb', './assets/asteroid1.png');
     this.load.image('bg3_p', 'https://s3.amazonaws.com/codecademy-content/courses/learn-phaser/Codey+Tundra/snowdunes.png');
     this.load.spritesheet('dude', './assets/dude.png', { frameWidth: 32, frameHeight: 48 })
-    this.load.spritesheet('fire_p', './assets/FiammeBlu.png', { frameWidth: 49, frameHeight: 61 })
+    this.load.spritesheet('fire_p', './assets/fiammeblu.png', { frameWidth: 49, frameHeight: 61 })
     this.load.spritesheet('spirit', './assets/spirits.png', { frameWidth: 48, frameHeight: 48 })
 }
 create ()
