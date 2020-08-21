@@ -76,7 +76,8 @@ create ()
         GameState.platforms.add(blocco9);
         GameState.platforms.add(blocco10);
         GameState.platforms.add(blocco11);
-        this.add.text(665, 23, `Main Menu`, { font: '12px Cooper Black', color: '#8C3ACD', align: 'center'}).setOrigin(0,0);
+        GameState.MainMenu = this.add.text(665, 23, `Main Menu`, { font: '12px Cooper Black', color: '#8C3ACD', align: 'center'}).setOrigin(0,0);
+        GameState.MainMenu.setScrollFactor(0, 0)
             // Dati di gioco : punteggio
 
             if (isNaN(this.data.get('score')) ) {
@@ -84,7 +85,7 @@ create ()
             }
          
             // Inserisco dati di gioco
-            GameState.text = this.add.text(20, 20, '', { font: '15px Courier Bold', fill: '#00ff00' });
+            GameState.text = this.add.text(GameState.Xtext, GameState.Ytext, '', { font: '15px Courier Bold', fill: '#00ff00' });
 
             GameState.text.setText([
                 'Player: ' + this.data.get('playername'),
@@ -93,7 +94,7 @@ create ()
                 'Score: ' + this.data.get('score'),
                 'Score to next level: ' + (GameState.ScoreLivello1Inferno - this.data.get('score'))
             ]);
-
+            GameState.text.setScrollFactor(0, 0);
         /*GameState.stars = this.physics.add.group({
             key: 'angel',
             repeat: 11,
@@ -116,8 +117,6 @@ create ()
             GameState.fire = this.physics.add.sprite(0, 300, 'fire').setScale(.3, .3);
         }*/
         
-        GameState.fire = this.physics.add.sprite(0, 300, 'fire').setScale(.3, .3);
-        GameState.fire.setCollideWorldBounds(true)
         GameState.player.setCollideWorldBounds(true);
         GameState.angel.setCollideWorldBounds(true);
         GameState.angel2.setCollideWorldBounds(true);
@@ -160,7 +159,6 @@ create ()
             frameRate: 20
         });
         
-        GameState.fire.play('fire_anim')
         GameState.bombs.children.iterate(function (child) {
             child.setScale(.5, .5);
             child.setCollideWorldBounds(true)

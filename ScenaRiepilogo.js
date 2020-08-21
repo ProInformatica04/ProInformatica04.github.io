@@ -14,6 +14,7 @@ class ScenaRiepilogo extends Phaser.Scene {
         this.load.spritesheet('button', './assets/flixel-button.png', { frameWidth: 80, frameHeight: 20 });
         this.load.spritesheet('dude', './assets/dude.png', { frameWidth: 32, frameHeight: 48 })
         this.load.image('sfondoprova', './assets/purgatorio_sfondo.jpg');
+        
         this.load.spritesheet('exit', 'https://s3.amazonaws.com/codecademy-content/courses/learn-phaser/Cave+Crisis/cave_exit.png', { frameWidth: 60, frameHeight: 70 });
     }
     create (){
@@ -38,21 +39,30 @@ class ScenaRiepilogo extends Phaser.Scene {
             case 'Inferno' :
                 NextLevel='Pugatorio';
                 var text = this.add.text(100, 250, 'Congratulazioni! Attraversa la porta per finire in '+NextLevel, { color: '#B8860B', fontFamily: 'Bold Courier', fontSize: '25px ', align: 'center'});
+                
             break;
             case 'Purgatorio' :
                 NextLevel='Paradiso';
                 var text = this.add.text(100, 250, 'Congratulazioni! Attraversa la porta per finire in '+NextLevel, { color: '#B8860B', fontFamily: 'Bold Courier', fontSize: '25px ', align: 'center'});
+                
             break;
             case 'Paradiso' :
                     NextLevel='Fine';    
                     var text = this.add.text(100, 250, 'Hai finitoooooooo!!!! Beccati la Visione Beatifica '+NextLevel, { color: '#B8860B', fontFamily: 'Bold Courier', fontSize: '25px ', align: 'center'});
+                    GameState.timer_riepilogue = this.time.delayedCall(2000, function() {
+                        this.cameras.main.fade(500);
+                        this.cameras.main.on('camerafadeoutcomplete', function(camera, effect) {
+                                this.scene.stop('ScenaRiepilogo');   
+                                this.scene.start('ScenaFinale',{ level : this.data.get('level'), lives : this.data.get('lives'), score : this.data.get('score'), playername : this.data.get('playername') });   
+                            }, this);
+                    }, [], this)
             break;
             default :
                 NextLevel='Inferno';   
-                var text = this.add.text(100, 300, 'Congratulazioni! Attraversa la porta per finire in '+NextLevel, { color: '#B8860B', fontFamily: 'Bold Courier', fontSize: '25px ', align: 'center'});
+                var text = this.add.text(100, 300, 'Congratulazioni! Attraversa la porta per finire in '+NextLevel, { color: '#B8860B', fontFamily: 'Bold Courier', fontSize: '25px ', align: 'center'}); 
             break;
         }  
-        GameState.exit = this.physics.add.sprite(400, 600, 'exit');
+        GameState.exit = this.physics.add.sprite(400, 600, 'exit').setScale(1.5, 1.5);
         GameState.exit.setCollideWorldBounds(true)
     this.anims.create({
       key: 'glow',
@@ -103,7 +113,7 @@ class ScenaRiepilogo extends Phaser.Scene {
         }
     }
     end () {
-        this.cameras.main.fade(500);
+        this.cameras.main.fade(200);
             this.cameras.main.on('camerafadeoutcomplete', function(camera, effect) {
                     this.scene.stop('ScenaRiepilogo');
                     this.scene.start('ProvePerGioco', { level : this.data.get('level'), lives : this.data.get('lives'), score : this.data.get('score'), playername : this.data.get('playername') });   

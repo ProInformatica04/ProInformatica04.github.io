@@ -13,6 +13,8 @@ const GameState = {
     ScoreLivello1Paradiso: 90,
     ScoreLivello2Paradiso: 110,
     ScoreLivello3Paradiso: 130,
+    Xtext: 20,
+    Ytext: 20
 
 }
 const config = {
@@ -24,7 +26,7 @@ const config = {
     dom: {
         createContainer: true
     },
-    scene: [ScenaIniziale, ProvePerGioco, ScenaParadiso, ScenaInferno, ScenaPurgatorio, GiocoParadiso, GiocoInferno, GiocoPurgatorio, ScenaRiepilogo], 
+    scene: [ScenaIniziale, ProvePerGioco, ScenaParadiso, ScenaInferno, ScenaPurgatorio, GiocoParadiso, GiocoInferno, GiocoPurgatorio, ScenaRiepilogo, ScenaFinale], 
     physics: {
 		default: 'arcade',
 		arcade: {

@@ -49,7 +49,7 @@ create ()
         GameState.background.setScrollFactor(0);
         GameState.background2.setOrigin(0, 0);
         GameState.background2.setScrollFactor(0);
-        var Bottone1 = this.add.sprite(700, 30, 'button').setInteractive().setScale(1.95, 1.95);
+        var Bottone1 = this.add.sprite(700, 30, 'button').setInteractive().setScale(1.95, 1.95).setScrollFactor(0, 0);
         GameState.platforms = this.physics.add.staticGroup();
         let blocco = this.add.tileSprite(400, 500, 1*50, 50, 'ground');
         let blocco2 = this.add.tileSprite(650, 300, 3*50, 50, 'ground');
@@ -73,7 +73,8 @@ create ()
         GameState.platforms.add(blocco9);
         GameState.platforms.add(blocco10);
         GameState.platforms.add(blocco11);
-        this.add.text(665, 23, `Main Menu`, { font: '12px Cooper Black', color: '#8C3ACD', align: 'center'}).setOrigin(0,0);
+        GameState.MainMenu = this.add.text(665, 23, `Main Menu`, { font: '12px Cooper Black', color: '#8C3ACD', align: 'center'}).setOrigin(0,0);
+        GameState.MainMenu.setScrollFactor(0, 0)
             // Dati di gioco : punteggio
 
             if (isNaN(this.data.get('score')) ) {
@@ -91,7 +92,7 @@ create ()
                 'Score: ' + this.data.get('score'),
                 'Score to next level: ' + (GameState.ScoreLivello1Paradiso - this.data.get('score'))
             ]);
-
+            GameState.text.setScrollFactor(0, 0);
 
 
 
