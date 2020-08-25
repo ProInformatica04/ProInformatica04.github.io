@@ -19,7 +19,7 @@ init(data){
 preload() {
         this.load.spritesheet('button', './assets/flixel-button.png', { frameWidth: 80, frameHeight: 20 });
         this.load.image('purgatorio', './assets/Purgatorio.jpg');
-        this.load.audio('musicaPurgatorio', './assets/MusicaPurgatorio.mp3');
+        this.load.audio('musicaPurgatorio', './assets/LoopPurgatorio.mp3');
     }
 create() {
         const BottoniNomi = [

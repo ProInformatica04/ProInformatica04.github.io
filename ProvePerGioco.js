@@ -21,7 +21,7 @@ init(data){
 preload() {
         this.load.spritesheet('button', './assets/flixel-button.png', { frameWidth: 80, frameHeight: 20 });
         this.load.image('bg', './assets/cougar-dragonsun.png');
-        this.load.audio('musicaMenu', './assets/MusicaMenu.mp3');
+        this.load.audio('musicaMenu', './assets/LoopMenu.mp3');
     }
 create() {
     //servirà per Mettere i Nomi ai bottoni
