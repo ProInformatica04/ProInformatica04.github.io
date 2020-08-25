@@ -33,10 +33,7 @@ preload ()
     //this.load.setBaseURL('http://labs.phaser.io');
     this.load.html('modalform', './assets/text/modalform.html');
     this.load.image('hell', './assets/inferno8.jpg');
-    this.load.image('plain', './assets/strip2.png');
     this.load.image('ground', './assets/50x50.png');
-    this.load.image('star', './assets/mushroom.png');
-    this.load.image('bomb', './assets/asteroid1.png');
     this.load.image('bg3', 'https://s3.amazonaws.com/codecademy-content/courses/learn-phaser/Codey+Tundra/snowdunes.png');
     this.load.spritesheet('dude', './assets/dude.png', { frameWidth: 32, frameHeight: 48 })
     this.load.spritesheet('fire', './assets/fiammerosse.png', { frameWidth: 58, frameHeight: 106})
@@ -189,6 +186,9 @@ create ()
         Bottone1.on('pointerdown', function (pointer) {
             this.cameras.main.fade(500);
             this.cameras.main.on('camerafadeoutcomplete', function(camera, effect) {
+                    GameState.MusicaInferno.stop();
+                    score = 0;
+                    this.data.set('score', 0)
                     this.scene.stop('GiocoInferno');
                     this.scene.start('ProvePerGioco',{ level : this.data.get('level'), lives : this.data.get('lives'), score : this.data.get('score'), playername : this.data.get('playername') });   
                 }, this); 

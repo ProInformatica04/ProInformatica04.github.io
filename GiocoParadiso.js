@@ -31,9 +31,7 @@ preload ()
     //this.load.setBaseURL('http://labs.phaser.io');
     this.load.html('modalform', './assets/text/modalform.html');
     this.load.image('paradise', './assets/purgatorio_sfondo.jpg');
-    this.load.image('plain', './assets/strip2.png');
     this.load.image('ground', './assets/50x50.png');
-    this.load.image('star', './assets/mushroom.png');
     this.load.spritesheet('stelle', './assets/stelle_transp.png', { frameWidth: 97, frameHeight: 109 });
     this.load.image('bg3_Par', 'https://s3.amazonaws.com/codecademy-content/courses/learn-phaser/Codey+Tundra/snowdunes.png');
     this.load.spritesheet('dude', './assets/dude.png', { frameWidth: 32, frameHeight: 48 })
@@ -191,7 +189,9 @@ create ()
         Bottone1.on('pointerdown', function (pointer) {
             this.cameras.main.fade(500);
             this.cameras.main.on('camerafadeoutcomplete', function(camera, effect) {
-                    GameState.MusicaParadiso.Stop();
+                    GameState.MusicaParadiso.stop();
+                    this.data.set('score', 50);
+                    score = 50;
                     this.scene.stop('GiocoParadiso');
                     this.scene.start('ProvePerGioco',{ level : this.data.get('level'), lives : this.data.get('lives'), score : this.data.get('score'), playername : this.data.get('playername') });   
                 }, this); 
